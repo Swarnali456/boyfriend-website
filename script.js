@@ -114,6 +114,7 @@ const questions = [
 let currentQuestion = 0;
 let score = 0;
 
+
 const startButton = document.getElementById("startButton");
 const game = document.getElementById("game");
 const question = document.getElementById("question");
@@ -148,7 +149,9 @@ function showQuestion() {
         button.textContent = option;
 
         button.addEventListener("click", function() {
+
             checkAnswer(index);
+
         });
 
         options.appendChild(button);
@@ -160,38 +163,95 @@ function showQuestion() {
 function checkAnswer(selectedAnswer) {
 
     if (selectedAnswer === questions[currentQuestion].answer) {
+
         score++;
-    }
 
-    currentQuestion++;
-
-    if (currentQuestion < questions.length) {
-
-        showQuestion();
+        result.textContent = "Correct! You actually know me 👀❤️";
 
     } else {
 
-        question.textContent = "Game Over 💕";
+        result.textContent = "Wrong! Excuse me?? 😭";
 
-        options.innerHTML = "";
+    }
 
-        result.textContent =
-            "You scored " + score + "/10 ❤️";
 
-        const restartButton = document.createElement("button");
+    const buttons = options.querySelectorAll("button");
 
-        restartButton.textContent = "Play Again 🔄";
+    buttons.forEach(function(button) {
 
-        restartButton.addEventListener("click", function() {
+        button.disabled = true;
 
-            currentQuestion = 0;
-            score = 0;
+    });
+
+
+    setTimeout(function() {
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
 
             showQuestion();
 
-        });
+        } else {
 
-        options.appendChild(restartButton);
+            showFinalScore();
+
+        }
+
+    }, 1000);
+
+}
+
+
+function showFinalScore() {
+
+    question.textContent = "Game Over 💕";
+
+    options.innerHTML = "";
+
+
+    if (score >= 9) {
+
+        result.textContent =
+            "You scored " + score + "/10 ❤️ " +
+            "Okayyy, you REALLY know me 👀";
+
+    } else if (score >= 7) {
+
+        result.textContent =
+            "You scored " + score + "/10 💗 " +
+            "Not bad... you've been paying attention 😌";
+
+    } else if (score >= 4) {
+
+        result.textContent =
+            "You scored " + score + "/10 😭 " +
+            "We need to have a serious conversation.";
+
+    } else {
+
+        result.textContent =
+            "You scored " + score + "/10 💀 " +
+            "WHO EVEN ARE YOU??";
 
     }
-}
+
+
+    const restartButton = document.createElement("button");
+
+    restartButton.textContent = "Play Again 🔄";
+
+
+    restartButton.addEventListener("click", function() {
+
+        currentQuestion = 0;
+        score = 0;
+
+        showQuestion();
+
+    });
+
+
+    options.appendChild(restartButton);
+
+        }
