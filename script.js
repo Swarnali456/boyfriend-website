@@ -1,146 +1,117 @@
+
 /* =========================
    GAME ONE
 ========================= */
-
 
 const questions = [
 
     {
         question: "What am I most likely to do when I'm stressed?",
-
         options: [
             "Talk to everyone about it",
             "Go completely quiet",
             "Distract myself with my phone or something else",
             "Make a detailed plan immediately"
         ],
-
         answer: 2
     },
 
-
     {
         question: "What kind of outing would make me happiest?",
-
         options: [
             "A huge crowded party",
             "A peaceful café and wandering somewhere new",
             "A formal dinner at an expensive restaurant",
             "A huge concert"
         ],
-
         answer: 1
     },
 
-
     {
         question: "What's my favourite type of food?",
-
         options: [
             "Chinese",
             "Bengali / Indian",
             "Italian",
-            "Korean"
+            "Fast food"
         ],
-
         answer: 1
     },
 
-
     {
         question: "What's my favourite season?",
-
         options: [
             "Spring",
             "Summer",
             "Autumn",
             "Winter"
         ],
-
         answer: 2
     },
 
-
     {
         question: "If I could instantly have ONE thing right now, what would I choose?",
-
         options: [
             "Financial independence",
             "A dream vacation",
             "A perfect wardrobe",
             "A completely stress-free life"
         ],
-
         answer: 0
     },
 
-
     {
         question: "What am I like when I first get to know someone?",
-
         options: [
             "Very talkative immediately",
             "Quiet at first, then chaotic when comfortable",
             "Super confident and outgoing",
             "I start teasing them immediately"
         ],
-
         answer: 1
     },
 
-
     {
         question: "What kind of weather do I actually prefer?",
-
         options: [
             "Bright and very sunny",
             "Heavy rain and thunderstorms",
             "Cool and breezy, neither sunny nor rainy",
             "Very cold and foggy"
         ],
-
         answer: 2
     },
 
-
     {
         question: "If I get a completely free day, what would I most likely choose?",
-
         options: [
             "Go to a huge party",
             "Spend the whole day shopping",
             "Cook something and enjoy a slow day",
             "Go on a long trip"
         ],
-
         answer: 2
     },
 
-
     {
         question: "Which kind of gift would mean the most to me?",
-
         options: [
             "Something very expensive",
             "Something handmade and personal",
             "A luxury handbag",
             "A gift card"
         ],
-
         answer: 1
     },
 
-
     {
         question: "What do I call people I'm really close and comfortable with?",
-
         options: [
             "Bro",
             "Tattu / Battu / Cutu-type nicknames",
             "Their full name",
             "Sir / Madam 😭"
         ],
-
         answer: 1
     }
 
@@ -148,17 +119,21 @@ const questions = [
 
 
 let currentQuestion = 0;
-
 let score = 0;
 
 
-const welcome = document.getElementById("welcome");
+/* =========================
+   ELEMENTS
+========================= */
 
-const startButton =
-    document.getElementById("startButton");
+const welcome =
+    document.getElementById("welcome");
 
 const quiz =
     document.getElementById("quiz");
+
+const startButton =
+    document.getElementById("startButton");
 
 const question =
     document.getElementById("question");
@@ -173,16 +148,32 @@ const progressBar =
     document.getElementById("progressBar");
 
 
+/* =========================
+   START GAME
+========================= */
+
 startButton.addEventListener("click", function() {
 
-    welcome.classList.add("hidden");
+    welcome.style.display = "none";
 
-    quiz.classList.remove("hidden");
+    quiz.style.display = "block";
+
+    currentQuestion = 0;
+
+    score = 0;
 
     showQuestion();
 
+    quiz.scrollIntoView({
+        behavior: "smooth"
+    });
+
 });
 
+
+/* =========================
+   SHOW QUESTION
+========================= */
 
 function showQuestion() {
 
@@ -198,7 +189,7 @@ function showQuestion() {
 
 
     progressBar.style.width =
-        ((currentQuestion) / questions.length * 100) + "%";
+        ((currentQuestion + 1) / 10 * 100) + "%";
 
 
     options.innerHTML = "";
@@ -216,11 +207,11 @@ function showQuestion() {
             option;
 
 
-        button.addEventListener("click", function() {
+        button.onclick = function() {
 
             checkAnswer(index);
 
-        });
+        };
 
 
         options.appendChild(button);
@@ -230,7 +221,22 @@ function showQuestion() {
 }
 
 
+/* =========================
+   CHECK ANSWER
+========================= */
+
 function checkAnswer(selectedAnswer) {
+
+    const buttons =
+        options.querySelectorAll("button");
+
+
+    buttons.forEach(function(button) {
+
+        button.disabled = true;
+
+    });
+
 
     if (
         selectedAnswer ===
@@ -250,17 +256,6 @@ function checkAnswer(selectedAnswer) {
     }
 
 
-    const buttons =
-        options.querySelectorAll("button");
-
-
-    buttons.forEach(function(button) {
-
-        button.disabled = true;
-
-    });
-
-
     setTimeout(function() {
 
         currentQuestion++;
@@ -275,24 +270,26 @@ function checkAnswer(selectedAnswer) {
 
         } else {
 
-            showFinalScore();
+            showScore();
 
         }
 
-    }, 1000);
+    }, 900);
 
 }
 
 
-function showFinalScore() {
+/* =========================
+   SCORE
+========================= */
+
+function showScore() {
 
     question.textContent =
         "Game Over 💕";
 
-
     progressBar.style.width =
         "100%";
-
 
     options.innerHTML = "";
 
@@ -302,29 +299,23 @@ function showFinalScore() {
         result.textContent =
             "You scored " +
             score +
-            "/10 ❤️ Okayyy, you REALLY know me 👀";
+            "/10 ❤️ You REALLY know me.";
 
-    }
-
-    else if (score >= 7) {
+    } else if (score >= 7) {
 
         result.textContent =
             "You scored " +
             score +
-            "/10 💗 Not bad... you've been paying attention 😌";
+            "/10 💗 Not bad...";
 
-    }
-
-    else if (score >= 4) {
+    } else if (score >= 4) {
 
         result.textContent =
             "You scored " +
             score +
-            "/10 😭 We need to have a serious conversation.";
+            "/10 😭 We need to talk.";
 
-    }
-
-    else {
+    } else {
 
         result.textContent =
             "You scored " +
@@ -334,24 +325,32 @@ function showFinalScore() {
     }
 
 
-    const nextButton =
+    const next =
         document.createElement("button");
 
 
-    nextButton.textContent =
+    next.textContent =
         "Next Game →";
 
 
-    nextButton.addEventListener("click", function() {
+    next.onclick = function() {
 
-        quiz.classList.add("hidden");
+        quiz.style.display = "none";
 
-        startSecondGame();
+        secondGame.style.display = "block";
 
-    });
+        currentPick = 0;
+
+        showPickQuestion();
+
+        secondGame.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    };
 
 
-    options.appendChild(nextButton);
+    options.appendChild(next);
 
 }
 
@@ -359,7 +358,6 @@ function showFinalScore() {
 /* =========================
    GAME TWO
 ========================= */
-
 
 const secondGame =
     document.getElementById("secondGame");
@@ -389,7 +387,6 @@ const pickQuestions = [
         answer: 2
     },
 
-
     {
         question: "Which gift would secretly make me happiest?",
 
@@ -403,7 +400,6 @@ const pickQuestions = [
         answer: 0
     },
 
-
     {
         question: "What kind of moment would I choose?",
 
@@ -416,7 +412,6 @@ const pickQuestions = [
 
         answer: 1
     },
-
 
     {
         question: "What's more important to me?",
@@ -437,16 +432,9 @@ const pickQuestions = [
 let currentPick = 0;
 
 
-function startSecondGame() {
-
-    secondGame.classList.remove("hidden");
-
-    currentPick = 0;
-
-    showPickQuestion();
-
-}
-
+/* =========================
+   SHOW GAME TWO
+========================= */
 
 function showPickQuestion() {
 
@@ -473,11 +461,11 @@ function showPickQuestion() {
             option;
 
 
-        button.addEventListener("click", function() {
+        button.onclick = function() {
 
             checkPick(index);
 
-        });
+        };
 
 
         pickOptions.appendChild(button);
@@ -486,6 +474,10 @@ function showPickQuestion() {
 
 }
 
+
+/* =========================
+   CHECK GAME TWO
+========================= */
 
 function checkPick(selected) {
 
@@ -516,8 +508,7 @@ function checkPick(selected) {
 
     }
 
-
-    setTimeout(function() {
+setTimeout(function() {
 
         currentPick++;
 
@@ -531,7 +522,7 @@ function checkPick(selected) {
 
         } else {
 
-            finishSecondGame();
+            finishGameTwo();
 
         }
 
@@ -540,7 +531,11 @@ function checkPick(selected) {
 }
 
 
-function finishSecondGame() {
+/* =========================
+   FINISH GAME TWO
+========================= */
+
+function finishGameTwo() {
 
     pickQuestion.textContent =
         "Okay, you're done 😌";
@@ -550,7 +545,7 @@ function finishSecondGame() {
 
 
     pickResult.textContent =
-        "Now you've unlocked the important part...";
+        "You've unlocked something important...";
 
 
     const songButton =
@@ -561,21 +556,17 @@ function finishSecondGame() {
         "Our Song 🎵";
 
 
-    songButton.addEventListener("click", function() {
+    songButton.onclick = function() {
 
-        secondGame.classList.add("hidden");
+        secondGame.style.display = "none";
 
-        document
-            .getElementById("songSection")
-            .classList.remove("hidden");
+        songSection.style.display = "block";
 
-        document
-            .getElementById("songSection")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
+        songSection.scrollIntoView({
+            behavior: "smooth"
+        });
 
-    });
+    };
 
 
     pickOptions.appendChild(songButton);
@@ -584,42 +575,27 @@ function finishSecondGame() {
 
 
 /* =========================
-   SONG → FINAL
+   SONG
 ========================= */
-
 
 const songSection =
     document.getElementById("songSection");
 
-
 const final =
     document.getElementById("final");
 
-
-const finalMessage =
-    document.getElementById("finalMessage");
-
-
-const restartButton =
-    document.getElementById("restartButton");
-
-
 const finalButton =
-    document.createElement("button");
+    document.getElementById("finalButton");
 
 
-finalButton.textContent =
-    "One Last Surprise →";
+finalButton.onclick = function() {
+
+    songSection.style.display = "none";
+
+    final.style.display = "block";
 
 
-finalButton.addEventListener("click", function() {
-
-    songSection.classList.add("hidden");
-
-    final.classList.remove("hidden");
-
-
-    finalMessage.innerHTML =
+    document.getElementById("finalMessage").innerHTML =
         "Maybe this website is just a tiny thing...<br><br>" +
 
         "but I wanted to make something that feels like us. " +
@@ -630,22 +606,23 @@ finalButton.addEventListener("click", function() {
 
         "Thank you for being part of my story.";
 
+
     final.scrollIntoView({
         behavior: "smooth"
     });
 
-});
-
-
-songSection.appendChild(finalButton);
+};
 
 
 /* =========================
    RESTART
 ========================= */
 
+const restartButton =
+    document.getElementById("restartButton");
 
-restartButton.addEventListener("click", function() {
+
+restartButton.onclick = function() {
 
     currentQuestion = 0;
 
@@ -654,15 +631,15 @@ restartButton.addEventListener("click", function() {
     currentPick = 0;
 
 
-    final.classList.add("hidden");
+    final.style.display = "none";
 
-    songSection.classList.add("hidden");
+    songSection.style.display = "none";
 
-    secondGame.classList.add("hidden");
+    secondGame.style.display = "none";
 
-    quiz.classList.add("hidden");
+    quiz.style.display = "none";
 
-    welcome.classList.remove("hidden");
+    welcome.style.display = "block";
 
 
     window.scrollTo({
@@ -670,4 +647,5 @@ restartButton.addEventListener("click", function() {
         behavior: "smooth"
     });
 
-});
+};
+    
