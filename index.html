@@ -1,24 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>For You ❤️</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
 
-        <h1>Hello, my love ❤️</h1>
 
-        <p>This is our little website.</p>
+    <main class="container">
 
-        <button id="startButton">Play a game 🎮</button>
+        <!-- WELCOME -->
 
-        <div id="game" style="display: none;">
+        <section id="welcome" class="card welcome-card">
 
-            <h2>How Well Do You Know Me? 💗</h2>
+            <div class="small-heart">♡</div>
+
+            <h1>Hello, my love</h1>
+
+            <p class="subtitle">
+                I made a tiny corner of the internet just for you.
+            </p>
+
+            <p>
+                Think you know me well enough?
+            </p>
+
+            <button id="startButton">
+                Let's find out ♡
+            </button>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section id="quiz" class="card hidden">
+
+            <p class="section-label">GAME ONE</p>
+
+            <h2>How Well Do You Know Me?</h2>
+
+            <div class="progress">
+                <div id="progressBar"></div>
+            </div>
 
             <p id="question"></p>
 
@@ -26,9 +65,84 @@
 
             <p id="result"></p>
 
-        </div>
+        </section>
 
-    </div>
+
+        <!-- SECOND GAME -->
+
+        <section id="secondGame" class="card hidden">
+
+            <p class="section-label">GAME TWO</p>
+
+            <h2>Pick One For Me 💗</h2>
+
+            <p class="game-description">
+                Let's see if you can guess what I'd choose.
+            </p>
+
+            <p id="pickQuestion"></p>
+
+            <div id="pickOptions"></div>
+
+            <p id="pickResult"></p>
+
+        </section>
+
+
+        <!-- SONG -->
+
+        <section id="songSection" class="card hidden">
+
+            <p class="section-label">OUR SONG</p>
+
+            <h2>A Little Song For Us 🎵</h2>
+
+            <p>
+                Because obviously every love story needs its own soundtrack.
+            </p>
+
+            <div class="spotify-box">
+
+                <iframe
+                    src="https://open.spotify.com/embed/track/6MZCYPT3hZPzwJGLnXn1RF"
+                    width="100%"
+                    height="152"
+                    frameborder="0"
+                    allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy">
+                </iframe>
+
+            </div>
+
+            <p class="song-note">
+                Press play. This one's ours. ♡
+            </p>
+
+        </section>
+
+
+        <!-- FINAL SURPRISE -->
+
+        <section id="final" class="card hidden final-card">
+
+            <div class="big-heart">♡</div>
+
+            <p class="section-label">ONE LAST THING</p>
+
+            <h2>Okay... you made it here.</h2>
+
+            <p id="finalMessage"></p>
+
+            <button id="restartButton">
+                Start Again ↻
+            </button>
+
+        </section>
+
+
+    </main>
+
 
     <script src="script.js"></script>
 
