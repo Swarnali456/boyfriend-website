@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,12 +22,10 @@
         <span>♡</span>
     </div>
 
-
     <main class="container">
 
         <!-- WELCOME -->
-
-        <section id="welcome" class="card welcome-card">
+        <section id="welcome" class="card">
 
             <div class="small-heart">♡</div>
 
@@ -47,9 +46,8 @@
         </section>
 
 
-        <!-- QUIZ -->
-
-        <section id="quiz" class="card hidden">
+        <!-- GAME ONE -->
+        <section id="quiz" class="card" style="display: none;">
 
             <p class="section-label">GAME ONE</p>
 
@@ -68,15 +66,14 @@
         </section>
 
 
-        <!-- SECOND GAME -->
-
-        <section id="secondGame" class="card hidden">
+        <!-- GAME TWO -->
+        <section id="secondGame" class="card" style="display: none;">
 
             <p class="section-label">GAME TWO</p>
 
             <h2>Pick One For Me 💗</h2>
 
-            <p class="game-description">
+            <p>
                 Let's see if you can guess what I'd choose.
             </p>
 
@@ -90,8 +87,7 @@
 
 
         <!-- SONG -->
-
-        <section id="songSection" class="card hidden">
+        <section id="songSection" class="card" style="display: none;">
 
             <p class="section-label">OUR SONG</p>
 
@@ -108,7 +104,6 @@
                     width="100%"
                     height="152"
                     frameborder="0"
-                    allowfullscreen=""
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy">
                 </iframe>
@@ -119,12 +114,15 @@
                 Press play. This one's ours. ♡
             </p>
 
+            <button id="finalButton">
+                One Last Surprise →
+            </button>
+
         </section>
 
 
-        <!-- FINAL SURPRISE -->
-
-        <section id="final" class="card hidden final-card">
+        <!-- FINAL -->
+        <section id="final" class="card final-card" style="display: none;">
 
             <div class="big-heart">♡</div>
 
@@ -140,9 +138,7 @@
 
         </section>
 
-
     </main>
-
 
     <script src="script.js"></script>
 
