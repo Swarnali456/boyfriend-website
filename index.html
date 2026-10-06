@@ -3,145 +3,1330 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For You ❤️</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>For You ♡</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Georgia, serif;
+
+    color: #4d3a35;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #fffaf0,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            #dfe6d7,
+            transparent 40%
+        ),
+        #f4eee4;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   FLOATING DECORATION
+========================= */
+
+.decor {
+    position: fixed;
+
+    font-size: 25px;
+
+    opacity: 0.25;
+
+    pointer-events: none;
+
+    animation: float 8s infinite linear;
+
+    z-index: 0;
+}
+
+.d1 {
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.d2 {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.d3 {
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.d4 {
+    left: 75%;
+    animation-delay: 1s;
+}
+
+.d5 {
+    left: 90%;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+
+    0% {
+        top: 110%;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        top: -10%;
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 92%;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 35px 0 80px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+
+    background: rgba(255,255,255,0.78);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    border-radius: 28px;
+
+    padding: 40px 25px;
+
+    box-shadow:
+        0 18px 45px rgba(70,50,40,0.12);
+
+    text-align: center;
+
+    animation: appear 0.5s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.small-label {
+
+    color: #8c6f5c;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+h1 {
+
+    margin: 5px 0 15px;
+
+    font-size: 44px;
+
+    color: #713f3c;
+}
+
+h2 {
+
+    margin: 8px 0 20px;
+
+    font-size: 29px;
+
+    color: #713f3c;
+}
+
+p {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+.subtitle {
+
+    font-size: 20px;
+
+    color: #765f54;
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+.heart {
+
+    font-size: 55px;
+
+    color: #8f4c4b;
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+
+    width: 100%;
+
+    max-width: 460px;
+
+    display: block;
+
+    margin: 12px auto;
+
+    padding: 16px 20px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: #713f3c;
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px rgba(70,40,35,0.15);
+
+    transition: 0.2s;
+}
+
+button:hover {
+
+    transform: translateY(-3px);
+
+    background: #8b514d;
+}
+
+button:active {
+
+    transform: scale(0.97);
+}
+
+button:disabled {
+
+    opacity: 0.6;
+
+    cursor: default;
+
+    transform: none;
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options {
+
+    margin-top: 25px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress {
+
+    height: 8px;
+
+    width: 100%;
+
+    background: #ded8cd;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin: 25px 0;
+}
+
+.progressBar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #8f4c4b;
+
+    transition: width 0.4s;
+}
+
+
+/* =========================
+   QUESTION
+========================= */
+
+.question {
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    margin: 25px 0;
+}
+
+.message {
+
+    min-height: 30px;
+
+    font-weight: bold;
+
+    margin-top: 20px;
+}
+
+
+/* =========================
+   SONG
+========================= */
+
+.songBox {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    margin: 25px 0;
+
+    box-shadow:
+        0 10px 25px rgba(50,40,30,0.15);
+}
+
+.songBox iframe {
+
+    display: block;
+
+    width: 100%;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.finalText {
+
+    max-width: 550px;
+
+    margin: 25px auto;
+
+    font-size: 20px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .container {
+        width: 94%;
+
+        padding-top: 25px;
+    }
+
+    .card {
+        padding: 32px 18px;
+
+        border-radius: 24px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .question {
+        font-size: 19px;
+    }
+
+    button {
+        font-size: 15px;
+
+        padding: 15px;
+    }
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <div class="hearts">
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
+
+<!-- FLOATING DECOR -->
+
+<div class="decor d1">♡</div>
+<div class="decor d2">✦</div>
+<div class="decor d3">♡</div>
+<div class="decor d4">✦</div>
+<div class="decor d5">♡</div>
+
+
+<div class="container">
+
+
+<!-- =========================
+     WELCOME
+========================= -->
+
+<section id="welcome" class="card">
+
+    <div class="heart">♡</div>
+
+    <div class="small-label">
+        A LITTLE SOMETHING FOR YOU
     </div>
 
-    <main class="container">
+    <h1>Hello, my love</h1>
 
-        <!-- WELCOME -->
-        <section id="welcome" class="card">
+    <p class="subtitle">
+        I made a tiny corner of the internet just for you.
+    </p>
 
-            <div class="small-heart">♡</div>
+    <p>
+        Think you know me well enough?
+    </p>
 
-            <h1>Hello, my love</h1>
+    <button id="startButton" type="button">
+        Let's find out ♡
+    </button>
 
-            <p class="subtitle">
-                I made a tiny corner of the internet just for you.
-            </p>
-
-            <p>
-                Think you know me well enough?
-            </p>
-
-            <button id="startButton">
-                Let's find out ♡
-            </button>
-
-        </section>
+</section>
 
 
-        <!-- GAME ONE -->
-        <section id="quiz" class="card" style="display: none;">
+<!-- =========================
+     GAME ONE
+========================= -->
 
-            <p class="section-label">GAME ONE</p>
+<section id="game1"
+class="card"
+style="display:none;">
 
-            <h2>How Well Do You Know Me?</h2>
+    <div class="small-label">
+        GAME ONE
+    </div>
 
-            <div class="progress">
-                <div id="progressBar"></div>
-            </div>
+    <h2>How Well Do You Know Me?</h2>
 
-            <p id="question"></p>
+    <div class="progress">
 
-            <div id="options"></div>
+        <div
+        id="progressBar"
+        class="progressBar">
+        </div>
 
-            <p id="result"></p>
+    </div>
 
-        </section>
+    <div
+    id="question"
+    class="question">
+    </div>
 
+    <div
+    id="options"
+    class="options">
+    </div>
 
-        <!-- GAME TWO -->
-        <section id="secondGame" class="card" style="display: none;">
+    <div
+    id="message"
+    class="message">
+    </div>
 
-            <p class="section-label">GAME TWO</p>
-
-            <h2>Pick One For Me 💗</h2>
-
-            <p>
-                Let's see if you can guess what I'd choose.
-            </p>
-
-            <p id="pickQuestion"></p>
-
-            <div id="pickOptions"></div>
-
-            <p id="pickResult"></p>
-
-        </section>
-
-
-        <!-- SONG -->
-        <section id="songSection" class="card" style="display: none;">
-
-            <p class="section-label">OUR SONG</p>
-
-            <h2>A Little Song For Us 🎵</h2>
-
-            <p>
-                Because obviously every love story needs its own soundtrack.
-            </p>
-
-            <div class="spotify-box">
-
-                <iframe
-                    src="https://open.spotify.com/embed/track/6MZCYPT3hZPzwJGLnXn1RF"
-                    width="100%"
-                    height="152"
-                    frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy">
-                </iframe>
-
-            </div>
-
-            <p class="song-note">
-                Press play. This one's ours. ♡
-            </p>
-
-            <button id="finalButton">
-                One Last Surprise →
-            </button>
-
-        </section>
+</section>
 
 
-        <!-- FINAL -->
-        <section id="final" class="card final-card" style="display: none;">
+<!-- =========================
+     GAME TWO
+========================= -->
 
-            <div class="big-heart">♡</div>
+<section id="game2"
+class="card"
+style="display:none;">
 
-            <p class="section-label">ONE LAST THING</p>
+    <div class="small-label">
+        GAME TWO
+    </div>
 
-            <h2>Okay... you made it here.</h2>
+    <h2>Pick One For Me</h2>
 
-            <p id="finalMessage"></p>
+    <p>
+        Let's see if you can guess what I'd choose.
+    </p>
 
-            <button id="restartButton">
-                Start Again ↻
-            </button>
+    <div
+    id="pickQuestion"
+    class="question">
+    </div>
 
-        </section>
+    <div
+    id="pickOptions"
+    class="options">
+    </div>
 
-    </main>
+    <div
+    id="pickMessage"
+    class="message">
+    </div>
 
-    <script src="script.js"></script>
+</section>
+
+
+<!-- =========================
+     SONG
+========================= -->
+
+<section id="song"
+class="card"
+style="display:none;">
+
+    <div class="small-label">
+        OUR SONG
+    </div>
+
+    <h2>A Little Song For Us</h2>
+
+    <p>
+        Because obviously every love story
+        needs its own soundtrack.
+    </p>
+
+    <div class="songBox">
+
+        <iframe
+        src="https://open.spotify.com/embed/track/6MZCYPT3hZPzwJGLnXn1RF"
+        height="152"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+        </iframe>
+
+    </div>
+
+    <p>
+        Press play. This one's ours. ♡
+    </p>
+
+    <button
+    id="finalButton"
+    type="button">
+        One Last Surprise →
+    </button>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section id="final"
+class="card"
+style="display:none;">
+
+    <div class="heart">
+        ♡
+    </div>
+
+    <div class="small-label">
+        ONE LAST THING
+    </div>
+
+    <h2>
+        Okay... you made it here.
+    </h2>
+
+    <div
+    id="finalText"
+    class="finalText">
+    </div>
+
+    <button
+    id="restartButton"
+    type="button">
+        Start Again ↻
+    </button>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const welcome =
+document.getElementById("welcome");
+
+const game1 =
+document.getElementById("game1");
+
+const game2 =
+document.getElementById("game2");
+
+const song =
+document.getElementById("song");
+
+const final =
+document.getElementById("final");
+
+const startButton =
+document.getElementById("startButton");
+
+const finalButton =
+document.getElementById("finalButton");
+
+const restartButton =
+document.getElementById("restartButton");
+
+
+/* =========================
+   GAME ONE DATA
+========================= */
+
+const questions = [
+
+{
+question:
+"What am I most likely to do when I'm stressed?",
+
+options: [
+"Talk to everyone about it",
+"Go completely quiet",
+"Distract myself with my phone or something else",
+"Make a detailed plan immediately"
+],
+
+answer: 2
+},
+
+{
+question:
+"What kind of outing would make me happiest?",
+
+options: [
+"A huge crowded party",
+"A peaceful café and wandering somewhere new",
+"A formal dinner at an expensive restaurant",
+"A huge concert"
+],
+
+answer: 1
+},
+
+{
+question:
+"What's my favourite type of food?",
+
+options: [
+"Chinese",
+"Bengali / Indian",
+"Italian",
+"Fast food"
+],
+
+answer: 1
+},
+
+{
+question:
+"What's my favourite season?",
+
+options: [
+"Spring",
+"Summer",
+"Autumn",
+"Winter"
+],
+
+answer: 2
+},
+
+{
+question:
+"If I could instantly have ONE thing right now, what would I choose?",
+
+options: [
+"Financial independence",
+"A dream vacation",
+"A perfect wardrobe",
+"A completely stress-free life"
+],
+
+answer: 0
+},
+
+{
+question:
+"What am I like when I first get to know someone?",
+
+options: [
+"Very talkative immediately",
+"Quiet at first, then chaotic when comfortable",
+"Super confident and outgoing",
+"I start teasing them immediately"
+],
+
+answer: 1
+},
+
+{
+question:
+"What kind of weather do I actually prefer?",
+
+options: [
+"Bright and very sunny",
+"Heavy rain and thunderstorms",
+"Cool and breezy, neither sunny nor rainy",
+"Very cold and foggy"
+],
+
+answer: 2
+},
+
+{
+question:
+"If I get a completely free day, what would I most likely choose?",
+
+options: [
+"Go to a huge party",
+"Spend the whole day shopping",
+"Cook something and enjoy a slow day",
+"Go on a long trip"
+],
+
+answer: 2
+},
+
+{
+question:
+"Which kind of gift would mean the most to me?",
+
+options: [
+"Something very expensive",
+"Something handmade and personal",
+"A luxury handbag",
+"A gift card"
+],
+
+answer: 1
+},
+
+{
+question:
+"What do I call people I'm really close and comfortable with?",
+
+options: [
+"Bro",
+"Tattu / Battu / Cutu-type nicknames",
+"Their full name",
+"Sir / Madam 😭"
+],
+
+answer: 1
+}
+
+];
+
+
+/* =========================
+   GAME TWO DATA
+========================= */
+
+const pickQuestions = [
+
+{
+question:
+"Where would I rather go with you?",
+
+options: [
+"Paris",
+"Disneyland",
+"A random peaceful place to explore together",
+"A huge shopping mall"
+],
+
+answer: 2
+},
+
+{
+question:
+"Which gift would secretly make me happiest?",
+
+options: [
+"Something handmade",
+"An expensive watch",
+"Cash",
+"A random decoration"
+],
+
+answer: 0
+},
+
+{
+question:
+"What kind of moment would I choose?",
+
+options: [
+"A super crowded party",
+"A peaceful bike ride with good weather",
+"A formal event",
+"A loud concert"
+],
+
+answer: 1
+},
+
+{
+question:
+"What's more important to me?",
+
+options: [
+"Showing off",
+"Peace and genuine connection",
+"Having the most expensive things",
+"Being popular"
+],
+
+answer: 1
+}
+
+];
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let currentPick = 0;
+
+
+/* =========================
+   HELPER
+========================= */
+
+function show(section) {
+
+    welcome.style.display = "none";
+
+    game1.style.display = "none";
+
+    game2.style.display = "none";
+
+    song.style.display = "none";
+
+    final.style.display = "none";
+
+    section.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   START
+========================= */
+
+startButton.onclick = function() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    show(game1);
+
+    displayQuestion();
+
+};
+
+
+/* =========================
+   GAME ONE
+========================= */
+
+function displayQuestion() {
+
+    const q =
+    questions[currentQuestion];
+
+    document.getElementById("question")
+    .textContent =
+    "Question " +
+    (currentQuestion + 1) +
+    "/10: " +
+    q.question;
+
+    document.getElementById("progressBar")
+    .style.width =
+    ((currentQuestion + 1) / questions.length * 100)
+    + "%";
+
+    const options =
+    document.getElementById("options");
+
+    const message =
+    document.getElementById("message");
+
+    options.innerHTML = "";
+
+    message.textContent = "";
+
+    q.options.forEach(function(option, index) {
+
+        const button =
+        document.createElement("button");
+
+        button.type = "button";
+
+        button.textContent = option;
+
+        button.onclick = function() {
+
+            answerQuestion(index);
+
+        };
+
+        options.appendChild(button);
+
+    });
+
+}
+
+
+function answerQuestion(selected) {
+
+    const q =
+    questions[currentQuestion];
+
+    const buttons =
+    document
+    .getElementById("options")
+    .querySelectorAll("button");
+
+    buttons.forEach(function(button) {
+
+        button.disabled = true;
+
+    });
+
+
+    const message =
+    document.getElementById("message");
+
+
+    if(selected === q.answer) {
+
+        score++;
+
+        message.textContent =
+        "Correct! You actually know me ♡";
+
+    } else {
+
+        message.textContent =
+        "Wrong! Excuse me?? 😭";
+
+    }
+
+
+    setTimeout(function() {
+
+        currentQuestion++;
+
+        if(
+        currentQuestion <
+        questions.length
+        ) {
+
+            displayQuestion();
+
+        } else {
+
+            showScore();
+
+        }
+
+    }, 900);
+
+}
+
+
+/* =========================
+   SCORE
+========================= */
+
+function showScore() {
+
+    document.getElementById("question")
+    .textContent =
+    "Game Over ♡";
+
+    document.getElementById("progressBar")
+    .style.width = "100%";
+
+    const options =
+    document.getElementById("options");
+
+    options.innerHTML = "";
+
+
+    const message =
+    document.getElementById("message");
+
+
+    if(score >= 9) {
+
+        message.textContent =
+        "You scored " +
+        score +
+        "/10 ❤️ You REALLY know me.";
+
+    }
+
+    else if(score >= 7) {
+
+        message.textContent =
+        "You scored " +
+        score +
+        "/10. Not bad... 👀";
+
+    }
+
+    else if(score >= 4) {
+
+        message.textContent =
+        "You scored " +
+        score +
+        "/10. We need to talk 😭";
+
+    }
+
+    else {
+
+        message.textContent =
+        "You scored " +
+        score +
+        "/10. WHO EVEN ARE YOU?? 💀";
+
+    }
+
+
+    const next =
+    document.createElement("button");
+
+    next.type = "button";
+
+    next.textContent =
+    "Next Game →";
+
+    next.onclick = function() {
+
+        currentPick = 0;
+
+        show(game2);
+
+        displayPickQuestion();
+
+    };
+
+    options.appendChild(next);
+
+}
+
+
+/* =========================
+   GAME TWO
+========================= */
+
+function displayPickQuestion() {
+
+    const q =
+    pickQuestions[currentPick];
+
+    document.getElementById("pickQuestion")
+    .textContent =
+    q.question;
+
+    document.getElementById("pickMessage")
+    .textContent = "";
+
+    const options =
+    document.getElementById("pickOptions");
+
+    options.innerHTML = "";
+
+
+    q.options.forEach(function(option, index) {
+
+        const button =
+        document.createElement("button");
+
+        button.type = "button";
+
+        button.textContent = option;
+
+        button.onclick = function() {
+
+            answerPick(index);
+
+        };
+
+        options.appendChild(button);
+
+    });
+
+}
+
+
+function answerPick(selected) {
+
+    const q =
+    pickQuestions[currentPick];
+
+    const buttons =
+    document
+    .getElementById("pickOptions")
+    .querySelectorAll("button");
+
+    buttons.forEach(function(button) {
+
+        button.disabled = true;
+
+    });
+
+
+    const message =
+    document.getElementById("pickMessage");
+
+
+    if(selected === q.answer) {
+
+        message.textContent =
+        "Correct again 👀♡";
+
+    } else {
+
+        message.textContent =
+        "Hmmmm... interesting choice 😭";
+
+    }
+
+
+    setTimeout(function() {
+
+        currentPick++;
+
+        if(
+        currentPick <
+        pickQuestions.length
+        ) {
+
+            displayPickQuestion();
+
+        } else {
+
+            finishGameTwo();
+
+        }
+
+    }, 900);
+
+}
+
+
+/* =========================
+   FINISH GAME TWO
+========================= */
+
+function finishGameTwo() {
+
+    document.getElementById("pickQuestion")
+    .textContent =
+    "Okay, you're done ♡";
+
+    document.getElementById("pickMessage")
+    .textContent =
+    "You've unlocked something important...";
+
+    const options =
+    document.getElementById("pickOptions");
+
+    options.innerHTML = "";
+
+
+    const button =
+    document.createElement("button");
+
+    button.type = "button";
+
+    button.textContent =
+    "Our Song 🎵";
+
+    button.onclick = function() {
+
+        show(song);
+
+    };
+
+    options.appendChild(button);
+
+}
+
+
+/* =========================
+   SONG → FINAL
+========================= */
+
+finalButton.onclick = function() {
+
+    show(final);
+
+    document.getElementById("finalText")
+    .innerHTML =
+
+    "Maybe this website is just a tiny thing...<br><br>" +
+
+    "but I wanted to make something that feels like us. " +
+
+    "A little chaotic, a little cute, and hopefully something " +
+
+    "that makes you smile. ♡<br><br>" +
+
+    "Thank you for being part of my story.";
+
+};
+
+
+/* =========================
+   RESTART
+========================= */
+
+restartButton.onclick = function() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    currentPick = 0;
+
+    show(welcome);
+
+};
+
+</script>
 
 </body>
 
-</html>
+    </html>
